@@ -27,7 +27,8 @@ class TVCollectionViewCell: UICollectionViewCell {
     }
     
     func configureView() {
-        posterImageView.backgroundColor = .blue
+        posterImageView.clipsToBounds = true
+        posterImageView.layer.cornerRadius = 12
     }
     
     func configureConstraints() {

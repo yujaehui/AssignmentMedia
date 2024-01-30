@@ -14,7 +14,7 @@ class TVTableViewCell: UITableViewCell {
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: 120, height: 160)
+        layout.itemSize = .init(width: 150, height: 200)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
@@ -23,6 +23,7 @@ class TVTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .black
         configureHierarchy()
         configureView()
         configureConstraints()
@@ -40,8 +41,7 @@ class TVTableViewCell: UITableViewCell {
     func configureView() {
         titleLabel.textColor = .white
         titleLabel.font = .boldSystemFont(ofSize: 20)
-        titleLabel.backgroundColor = .red
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = .black
     }
     
     func configureConstraints() {

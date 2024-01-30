@@ -21,6 +21,9 @@
 		09DA23942B68DD660092F537 /* TVTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23932B68DD660092F537 /* TVTableViewCell.swift */; };
 		09DA23962B68E02C0092F537 /* TVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23952B68E02C0092F537 /* TVCollectionViewCell.swift */; };
 		09DA23992B68E1720092F537 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09DA23982B68E1720092F537 /* .gitignore */; };
+		09DA239B2B68E1AC0092F537 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA239A2B68E1AC0092F537 /* APIKey.swift */; };
+		09DA239F2B68E3AE0092F537 /* TVAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA239E2B68E3AE0092F537 /* TVAPIManager.swift */; };
+		09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23A42B68EDDB0092F537 /* TVModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		09DA23932B68DD660092F537 /* TVTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVTableViewCell.swift; sourceTree = "<group>"; };
 		09DA23952B68E02C0092F537 /* TVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCollectionViewCell.swift; sourceTree = "<group>"; };
 		09DA23982B68E1720092F537 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		09DA239A2B68E1AC0092F537 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		09DA239E2B68E3AE0092F537 /* TVAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVAPIManager.swift; sourceTree = "<group>"; };
+		09DA23A42B68EDDB0092F537 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 		09DA23972B68E1350092F537 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				09DA239A2B68E1AC0092F537 /* APIKey.swift */,
+				09DA23A42B68EDDB0092F537 /* TVModel.swift */,
+				09DA239E2B68E3AE0092F537 /* TVAPIManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -187,10 +196,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				09DA23762B68DBB60092F537 /* ViewController.swift in Sources */,
+				09DA239B2B68E1AC0092F537 /* APIKey.swift in Sources */,
 				09DA23722B68DBB60092F537 /* AppDelegate.swift in Sources */,
 				09DA23942B68DD660092F537 /* TVTableViewCell.swift in Sources */,
+				09DA239F2B68E3AE0092F537 /* TVAPIManager.swift in Sources */,
 				09DA23872B68DC120092F537 /* TVViewController.swift in Sources */,
 				09DA23962B68E02C0092F537 /* TVCollectionViewCell.swift in Sources */,
+				09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */,
 				09DA23742B68DBB60092F537 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
