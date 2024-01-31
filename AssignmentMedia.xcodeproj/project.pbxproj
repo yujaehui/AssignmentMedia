@@ -24,6 +24,25 @@
 		09DA239B2B68E1AC0092F537 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA239A2B68E1AC0092F537 /* APIKey.swift */; };
 		09DA239F2B68E3AE0092F537 /* TVAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA239E2B68E3AE0092F537 /* TVAPIManager.swift */; };
 		09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23A42B68EDDB0092F537 /* TVModel.swift */; };
+		09DA23AB2B69557B0092F537 /* TVMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23AA2B69557B0092F537 /* TVMainTableViewCell.swift */; };
+		09DA23B92B6A16DC0092F537 /* TVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23B82B6A16DC0092F537 /* TVDetailViewController.swift */; };
+		09DA23BC2B6A16F00092F537 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23BB2B6A16F00092F537 /* BaseViewController.swift */; };
+		09DA23BE2B6A19A90092F537 /* TVMainInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23BD2B6A19A90092F537 /* TVMainInfoTableViewCell.swift */; };
+		09DA23C02B6A19B30092F537 /* TVSubInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23BF2B6A19B30092F537 /* TVSubInfoTableViewCell.swift */; };
+		09DA23C42B6A1BE00092F537 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23C32B6A1BE00092F537 /* BaseTableViewCell.swift */; };
+		09DA23C72B6A1D920092F537 /* UIButton.Configuration+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23C62B6A1D920092F537 /* UIButton.Configuration+Extension.swift */; };
+		09DA23CC2B6A3C3A0092F537 /* SeriesDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23CB2B6A3C3A0092F537 /* SeriesDetailsModel.swift */; };
+		09DA23CE2B6A3EE20092F537 /* AggregateCreditsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23CD2B6A3EE20092F537 /* AggregateCreditsModel.swift */; };
+		09DA23D02B6A61060092F537 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23CF2B6A61060092F537 /* BaseCollectionViewCell.swift */; };
+		09DA23D22B6A61510092F537 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23D12B6A61510092F537 /* PosterImageView.swift */; };
+		09DA23D52B6A62450092F537 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23D42B6A62450092F537 /* FontStyle.swift */; };
+		09DA23D72B6A63710092F537 /* ColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23D62B6A63710092F537 /* ColorStyle.swift */; };
+		09DA23DB2B6A64840092F537 /* MiniTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23DA2B6A64840092F537 /* MiniTitleLabel.swift */; };
+		09DA23DD2B6A65040092F537 /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23DC2B6A65040092F537 /* InfoLabel.swift */; };
+		09DA23DF2B6A67B90092F537 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23DE2B6A67B90092F537 /* TitleLabel.swift */; };
+		09DA23E12B6A68330092F537 /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23E02B6A68330092F537 /* PrimaryLabel.swift */; };
+		09DA23E32B6A683B0092F537 /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23E22B6A683B0092F537 /* SecondaryLabel.swift */; };
+		09DA23E72B6A6BEC0092F537 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23E62B6A6BEC0092F537 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +61,25 @@
 		09DA239A2B68E1AC0092F537 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		09DA239E2B68E3AE0092F537 /* TVAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVAPIManager.swift; sourceTree = "<group>"; };
 		09DA23A42B68EDDB0092F537 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
+		09DA23AA2B69557B0092F537 /* TVMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMainTableViewCell.swift; sourceTree = "<group>"; };
+		09DA23B82B6A16DC0092F537 /* TVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailViewController.swift; sourceTree = "<group>"; };
+		09DA23BB2B6A16F00092F537 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		09DA23BD2B6A19A90092F537 /* TVMainInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMainInfoTableViewCell.swift; sourceTree = "<group>"; };
+		09DA23BF2B6A19B30092F537 /* TVSubInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSubInfoTableViewCell.swift; sourceTree = "<group>"; };
+		09DA23C32B6A1BE00092F537 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		09DA23C62B6A1D920092F537 /* UIButton.Configuration+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton.Configuration+Extension.swift"; sourceTree = "<group>"; };
+		09DA23CB2B6A3C3A0092F537 /* SeriesDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsModel.swift; sourceTree = "<group>"; };
+		09DA23CD2B6A3EE20092F537 /* AggregateCreditsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateCreditsModel.swift; sourceTree = "<group>"; };
+		09DA23CF2B6A61060092F537 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		09DA23D12B6A61510092F537 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
+		09DA23D42B6A62450092F537 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		09DA23D62B6A63710092F537 /* ColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyle.swift; sourceTree = "<group>"; };
+		09DA23DA2B6A64840092F537 /* MiniTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniTitleLabel.swift; sourceTree = "<group>"; };
+		09DA23DC2B6A65040092F537 /* InfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
+		09DA23DE2B6A67B90092F537 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		09DA23E02B6A68330092F537 /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
+		09DA23E22B6A683B0092F537 /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
+		09DA23E62B6A6BEC0092F537 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +117,15 @@
 		09DA23702B68DBB60092F537 /* AssignmentMedia */ = {
 			isa = PBXGroup;
 			children = (
+				09DA23C82B6A1E5D0092F537 /* CustomView */,
+				09DA23BA2B6A16E60092F537 /* Base */,
 				09DA23972B68E1350092F537 /* Network */,
 				09DA23852B68DBC00092F537 /* TV */,
 				09DA23712B68DBB60092F537 /* AppDelegate.swift */,
 				09DA23732B68DBB60092F537 /* SceneDelegate.swift */,
 				09DA23752B68DBB60092F537 /* ViewController.swift */,
+				09DA23D32B6A62330092F537 /* DesignSystem */,
+				09DA23C52B6A1D700092F537 /* Extension */,
 				09DA23772B68DBB60092F537 /* Main.storyboard */,
 				09DA237A2B68DBB70092F537 /* Assets.xcassets */,
 				09DA237C2B68DBB70092F537 /* LaunchScreen.storyboard */,
@@ -96,8 +138,12 @@
 			isa = PBXGroup;
 			children = (
 				09DA23862B68DC120092F537 /* TVViewController.swift */,
+				09DA23AA2B69557B0092F537 /* TVMainTableViewCell.swift */,
 				09DA23932B68DD660092F537 /* TVTableViewCell.swift */,
 				09DA23952B68E02C0092F537 /* TVCollectionViewCell.swift */,
+				09DA23B82B6A16DC0092F537 /* TVDetailViewController.swift */,
+				09DA23BD2B6A19A90092F537 /* TVMainInfoTableViewCell.swift */,
+				09DA23BF2B6A19B30092F537 /* TVSubInfoTableViewCell.swift */,
 			);
 			path = TV;
 			sourceTree = "<group>";
@@ -106,10 +152,69 @@
 			isa = PBXGroup;
 			children = (
 				09DA239A2B68E1AC0092F537 /* APIKey.swift */,
-				09DA23A42B68EDDB0092F537 /* TVModel.swift */,
 				09DA239E2B68E3AE0092F537 /* TVAPIManager.swift */,
+				09DA23A42B68EDDB0092F537 /* TVModel.swift */,
+				09DA23CB2B6A3C3A0092F537 /* SeriesDetailsModel.swift */,
+				09DA23CD2B6A3EE20092F537 /* AggregateCreditsModel.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		09DA23BA2B6A16E60092F537 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				09DA23BB2B6A16F00092F537 /* BaseViewController.swift */,
+				09DA23C32B6A1BE00092F537 /* BaseTableViewCell.swift */,
+				09DA23CF2B6A61060092F537 /* BaseCollectionViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		09DA23C52B6A1D700092F537 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				09DA23C62B6A1D920092F537 /* UIButton.Configuration+Extension.swift */,
+				09DA23E62B6A6BEC0092F537 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		09DA23C82B6A1E5D0092F537 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				09DA23E52B6A68EC0092F537 /* ImageView */,
+				09DA23E42B6A683F0092F537 /* Label */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		09DA23D32B6A62330092F537 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				09DA23D42B6A62450092F537 /* FontStyle.swift */,
+				09DA23D62B6A63710092F537 /* ColorStyle.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		09DA23E42B6A683F0092F537 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				09DA23DE2B6A67B90092F537 /* TitleLabel.swift */,
+				09DA23DA2B6A64840092F537 /* MiniTitleLabel.swift */,
+				09DA23DC2B6A65040092F537 /* InfoLabel.swift */,
+				09DA23E02B6A68330092F537 /* PrimaryLabel.swift */,
+				09DA23E22B6A683B0092F537 /* SecondaryLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		09DA23E52B6A68EC0092F537 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				09DA23D12B6A61510092F537 /* PosterImageView.swift */,
+			);
+			path = ImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,15 +300,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09DA23C42B6A1BE00092F537 /* BaseTableViewCell.swift in Sources */,
+				09DA23DB2B6A64840092F537 /* MiniTitleLabel.swift in Sources */,
 				09DA23762B68DBB60092F537 /* ViewController.swift in Sources */,
 				09DA239B2B68E1AC0092F537 /* APIKey.swift in Sources */,
+				09DA23D72B6A63710092F537 /* ColorStyle.swift in Sources */,
 				09DA23722B68DBB60092F537 /* AppDelegate.swift in Sources */,
 				09DA23942B68DD660092F537 /* TVTableViewCell.swift in Sources */,
+				09DA23CC2B6A3C3A0092F537 /* SeriesDetailsModel.swift in Sources */,
+				09DA23C02B6A19B30092F537 /* TVSubInfoTableViewCell.swift in Sources */,
+				09DA23E12B6A68330092F537 /* PrimaryLabel.swift in Sources */,
 				09DA239F2B68E3AE0092F537 /* TVAPIManager.swift in Sources */,
+				09DA23BC2B6A16F00092F537 /* BaseViewController.swift in Sources */,
+				09DA23E32B6A683B0092F537 /* SecondaryLabel.swift in Sources */,
+				09DA23CE2B6A3EE20092F537 /* AggregateCreditsModel.swift in Sources */,
+				09DA23DD2B6A65040092F537 /* InfoLabel.swift in Sources */,
+				09DA23D02B6A61060092F537 /* BaseCollectionViewCell.swift in Sources */,
 				09DA23872B68DC120092F537 /* TVViewController.swift in Sources */,
 				09DA23962B68E02C0092F537 /* TVCollectionViewCell.swift in Sources */,
 				09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */,
+				09DA23C72B6A1D920092F537 /* UIButton.Configuration+Extension.swift in Sources */,
+				09DA23DF2B6A67B90092F537 /* TitleLabel.swift in Sources */,
+				09DA23B92B6A16DC0092F537 /* TVDetailViewController.swift in Sources */,
+				09DA23E72B6A6BEC0092F537 /* UIView+Extension.swift in Sources */,
+				09DA23AB2B69557B0092F537 /* TVMainTableViewCell.swift in Sources */,
 				09DA23742B68DBB60092F537 /* SceneDelegate.swift in Sources */,
+				09DA23BE2B6A19A90092F537 /* TVMainInfoTableViewCell.swift in Sources */,
+				09DA23D22B6A61510092F537 /* PosterImageView.swift in Sources */,
+				09DA23D52B6A62450092F537 /* FontStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

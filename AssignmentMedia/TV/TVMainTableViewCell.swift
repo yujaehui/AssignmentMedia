@@ -1,17 +1,15 @@
 //
-//  TVTableViewCell.swift
+//  TVMainTableViewCell.swift
 //  AssignmentMedia
 //
-//  Created by Jaehui Yu on 1/30/24.
+//  Created by Jaehui Yu on 1/31/24.
 //
 
 import UIKit
 
-class TVTableViewCell: BaseTableViewCell {
-    
-    let promotionLabel = SecondaryLabel()
+class TVMainTableViewCell: BaseTableViewCell {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -21,7 +19,6 @@ class TVTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
-        contentView.addSubview(promotionLabel)
         contentView.addSubview(collectionView)
     }
     
@@ -30,26 +27,18 @@ class TVTableViewCell: BaseTableViewCell {
     }
     
     override func configureConstraints() {
-        promotionLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView).inset(16)
-            make.width.equalTo(200)
-            make.height.equalTo(20)
-        }
-        
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(promotionLabel.snp.bottom).offset(8)
-            make.horizontalEdges.bottom.equalTo(contentView)
+            make.edges.equalTo(contentView)
         }
     }
 }
 
-extension TVTableViewCell {
+extension TVMainTableViewCell {
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: 120, height: 160)
-        layout.minimumLineSpacing = 10
+        layout.itemSize = .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width*4/3)
+        layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = .init(top: 10, left: 10, bottom: 10, right: 10)
         layout.scrollDirection = .horizontal
         return layout
     }

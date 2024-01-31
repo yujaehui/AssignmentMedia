@@ -7,33 +7,28 @@
 
 import UIKit
 
-class TVCollectionViewCell: UICollectionViewCell {
+class TVCollectionViewCell: BaseCollectionViewCell {
     
-    let posterImageView = UIImageView()
+    let posterImageView = PosterImageView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureHierarchy()
-        configureView()
-        configureConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(posterImageView)
     }
     
-    func configureView() {
-        posterImageView.clipsToBounds = true
-        posterImageView.layer.cornerRadius = 12
-    }
+    override func configureView() {}
     
-    func configureConstraints() {
+    override func configureConstraints() {
         posterImageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
+            //make.top.bottom.equalTo(contentView).inset(10)
         }
     }
 }

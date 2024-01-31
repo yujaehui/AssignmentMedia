@@ -9,48 +9,61 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class TVViewController: UIViewController {
+class TVViewController: BaseViewController {
     
     let tableView = UITableView()
     
+    var mainList = TVModel(results: [])
     var descriptionList = ["이번주 뜨는 콘텐츠", "TOP 20", "인기 콘텐츠"]
     var list: [[Result]] = [[], [], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .black
         
-        configureHierarchy()
-        configureView()
-        configureConstraints()
+        let group = DispatchGroup()
         
-        TVAPIManager.shared.fetchTV(url: "https://api.themoviedb.org/3/trending/tv/week?language=ko-KR") { result in
+        group.enter()
+        TVAPIManager.shared.fetchTVList(url: "tv/airing_today?language=ko-KR") { main in
+            self.mainList = main
+            group.leave()
+        }
+        
+        group.enter()
+        TVAPIManager.shared.fetchTV(url: "trending/tv/week?language=ko-KR") { result in
             self.list[0] = result
-            self.tableView.reloadData()
+            group.leave()
         }
-        TVAPIManager.shared.fetchTV(url: "https://api.themoviedb.org/3/tv/top_rated?language=ko-KR") { result in
+        
+        group.enter()
+        TVAPIManager.shared.fetchTV(url: "tv/top_rated?language=ko-KR") { result in
             self.list[1] = result
-            self.tableView.reloadData()
+            group.leave()
         }
-        TVAPIManager.shared.fetchTV(url: "https://api.themoviedb.org/3/tv/popular?language=ko=KR") { result in
+        
+        group.enter()
+        TVAPIManager.shared.fetchTV(url: "tv/popular?language=ko=KR") { result in
             self.list[2] = result
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
             self.tableView.reloadData()
         }
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(tableView)
     }
     
-    func configureView() {
+    override func configureView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(TVTableViewCell.self, forCellReuseIdentifier: "TVTableViewCell")
-        tableView.backgroundColor = .black
+        tableView.register(TVTableViewCell.self, forCellReuseIdentifier: TVTableViewCell.identifier)
+        tableView.register(TVMainTableViewCell.self, forCellReuseIdentifier: TVMainTableViewCell.identifier)
+        tableView.backgroundColor = ColorStyle.backgroundColor
     }
     
-    func configureConstraints() {
+    override func configureConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -58,41 +71,81 @@ class TVViewController: UIViewController {
 }
 
 extension TVViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        if section == 0 {
+            return 1
+        } else {
+            return list.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TVTableViewCell", for: indexPath) as! TVTableViewCell
-        cell.titleLabel.text = descriptionList[indexPath.row]
-        cell.collectionView.dataSource = self
-        cell.collectionView.delegate = self
-        cell.collectionView.register(TVCollectionViewCell.self, forCellWithReuseIdentifier: "TVCollectionViewCell")
-        cell.collectionView.tag = indexPath.row
-        cell.collectionView.reloadData()
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TVMainTableViewCell.identifier, for: indexPath) as! TVMainTableViewCell
+            cell.collectionView.isPagingEnabled = true
+            cell.collectionView.delegate = self
+            cell.collectionView.dataSource = self
+            cell.collectionView.register(TVCollectionViewCell.self, forCellWithReuseIdentifier: TVCollectionViewCell.identifier)
+            cell.collectionView.tag = 100
+            cell.collectionView.reloadData()
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TVTableViewCell.identifier, for: indexPath) as! TVTableViewCell
+            cell.promotionLabel.text = descriptionList[indexPath.row]
+            cell.collectionView.dataSource = self
+            cell.collectionView.delegate = self
+            cell.collectionView.register(TVCollectionViewCell.self, forCellWithReuseIdentifier: TVCollectionViewCell.identifier)
+            cell.collectionView.tag = indexPath.row
+            cell.collectionView.reloadData()
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        if indexPath.section == 0 {
+            return UIScreen.main.bounds.width*4/3
+        } else {
+            return 200
+        }
     }
 }
 
-extension TVViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension TVViewController: UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list[collectionView.tag].count
+        if collectionView.tag == 100 {
+            let count = min(5, mainList.results.count)
+            return count
+        } else {
+            return list[collectionView.tag].count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TVCollectionViewCell", for: indexPath) as! TVCollectionViewCell
-        let row = list[collectionView.tag][indexPath.row]
-        if let poster = row.poster_path {
-            let url = URL(string: "https://image.tmdb.org/t/p/w500\(poster)")
-            cell.posterImageView.kf.setImage(with: url)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVCollectionViewCell.identifier, for: indexPath) as! TVCollectionViewCell
+        if collectionView.tag == 100 {
+            let row = mainList.results[indexPath.row]
+            if let poster = row.poster_path {
+                let url = URL(string: TVAPIManager.shared.imageeBaseURL + poster)
+                cell.posterImageView.kf.setImage(with: url)
+            } else {
+                let url = URL(string: TVAPIManager.shared.errorImageURL)
+                cell.posterImageView.kf.setImage(with: url)
+            }
+            return cell
         } else {
-            let url = URL(string: "https://lh3.googleusercontent.com/proxy/4qYlpVBIvCD9r_JD8iEEoo-FJE3ecW8wdrDaqCxilzZsoCKSyf5_lXOG8stFWGQp7_Wji7q-2kzwXEXjD4Lx_T53iUZ2HWH03tk")
-            cell.posterImageView.kf.setImage(with: url)
+            let row = list[collectionView.tag][indexPath.row]
+            if let poster = row.poster_path {
+                let url = URL(string: TVAPIManager.shared.imageeBaseURL + poster)
+                cell.posterImageView.kf.setImage(with: url)
+            } else {
+                let url = URL(string: TVAPIManager.shared.errorImageURL)
+                cell.posterImageView.kf.setImage(with: url)
+            }
+            return cell
         }
-        return cell
     }
 }
