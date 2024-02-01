@@ -8,7 +8,6 @@
 import UIKit
 
 class TVCollectionViewCell: BaseCollectionViewCell {
-    
     let posterImageView = PosterImageView(frame: .zero)
     
     override init(frame: CGRect) {
@@ -28,7 +27,6 @@ class TVCollectionViewCell: BaseCollectionViewCell {
     override func configureConstraints() {
         posterImageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
-            //make.top.bottom.equalTo(contentView).inset(10)
         }
     }
 }

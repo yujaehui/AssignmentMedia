@@ -7,13 +7,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.tabBar.tintColor = .white
+        self.tabBar.unselectedItemTintColor = .gray
+        self.tabBar.backgroundColor = .black
+        self.tabBar.barTintColor = .black
+        addVC()
     }
 
+    private func addVC() {
+        let firstVC = UINavigationController(rootViewController: TVViewController())
+        firstVC.tabBarItem = UITabBarItem(title: "1", image: UIImage(systemName: "1.circle"), selectedImage: UIImage(systemName: "1.circle"))
+        
+        let secondVC = UINavigationController(rootViewController: TVDetailViewController())
+        secondVC.tabBarItem = UITabBarItem(title: "2", image: UIImage(systemName: "2.circle"), selectedImage: UIImage(systemName: "2.circle"))
+        
+        self.viewControllers = [firstVC, secondVC]
+    }
 
 }
 

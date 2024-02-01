@@ -14,8 +14,8 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
     let networkLabel = InfoLabel()
     let creatorInfoLabel = InfoLabel()
     let creatorLabel = InfoLabel()
-    let actorInfoLabel = InfoLabel()
-    let actorLabel = InfoLabel()
+    let creditInfoLabel = InfoLabel()
+    let creditLabel = InfoLabel()
     let descriptionLabel = InfoLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -23,14 +23,14 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
         contentView.backgroundColor = ColorStyle.backgroundColor.withAlphaComponent(0.9)
     }
     
-    func configureCell(detail: SeriesDetailsModel, actor: AggregateCreditsModel) {
+    func configureCell(detail: SeriesDetailsModel, credit: AggregateCreditsModel) {
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(detail.posterPath)")
         posterImageView.kf.setImage(with: url)
         titleLabel.text = detail.name
         networkLabel.text = detail.networks.map { $0.name }.joined(separator: ", ")
         creatorLabel.text = detail.createdBy.map { $0.name }.joined(separator: ", ")
-        let actorConut = min(5, actor.cast.count)
-        actorLabel.text = actor.cast.prefix(actorConut).map { $0.name }.joined(separator: ", ")
+        let creditConut = min(5, credit.cast.count)
+        creditLabel.text = credit.cast.prefix(creditConut).map { $0.name }.joined(separator: ", ")
         descriptionLabel.text = detail.overview
     }
     
@@ -44,15 +44,15 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
         contentView.addSubview(networkLabel)
         contentView.addSubview(creatorInfoLabel)
         contentView.addSubview(creatorLabel)
-        contentView.addSubview(actorInfoLabel)
-        contentView.addSubview(actorLabel)
+        contentView.addSubview(creditInfoLabel)
+        contentView.addSubview(creditLabel)
         contentView.addSubview(descriptionLabel)
     }
     
     override func configureView() {
         creatorInfoLabel.text = "크리에이터"
-        actorInfoLabel.text = "출연"
-        actorLabel.numberOfLines = 0
+        creditInfoLabel.text = "출연"
+        creditLabel.numberOfLines = 0
         descriptionLabel.numberOfLines = 0
     }
     
@@ -90,21 +90,21 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
             make.height.equalTo(14)
         }
         
-        actorInfoLabel.snp.makeConstraints { make in
+        creditInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(creatorInfoLabel.snp.bottom).offset(4)
             make.leading.equalTo(posterImageView.snp.trailing).offset(16)
             make.width.equalTo(23)
             make.height.equalTo(14)
         }
         
-        actorLabel.snp.makeConstraints { make in
+        creditLabel.snp.makeConstraints { make in
             make.top.equalTo(creatorLabel.snp.bottom).offset(4)
-            make.leading.equalTo(actorInfoLabel.snp.trailing).offset(8)
+            make.leading.equalTo(creditInfoLabel.snp.trailing).offset(8)
             make.trailing.equalTo(contentView).inset(16)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(actorLabel.snp.bottom).offset(16)
+            make.top.equalTo(creditLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView).inset(8)
             make.bottom.equalTo(contentView).inset(16)
         }

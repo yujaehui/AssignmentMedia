@@ -10,69 +10,46 @@ import Kingfisher
 
 class TVDetailViewController: BaseViewController {
     
-    let backdropImageView = UIImageView()
-    let tableView: UITableView = {
-        let view = UITableView()
-        view.backgroundColor = ColorStyle.backgroundColor
-        return view
-    }()
+    let tvDetailView = TVDetailView()
+    
+    override func loadView() {
+        self.view = tvDetailView
+    }
 
     var detail = SeriesDetailsModel(backdropPath: "", posterPath: "", name: "", date: "", episodeRunTime: [], networks: [], createdBy: [], overview: "")
-    var actor = AggregateCreditsModel(cast: [])
-    var recommend = TVModel(results: [])
+    var credit = AggregateCreditsModel(cast: [])
+    var recommend: [Result] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tvDetailView.tableView.dataSource = self
+        tvDetailView.tableView.delegate = self
+        
         let group = DispatchGroup()
         
         group.enter()
-        TVAPIManager.shared.fetchDetail { detail in
+        TVAPIManager.shared.fetchDetail(api: .detail(id: 67915)) { detail in
             self.detail = detail
             group.leave()
         }
         
         group.enter()
-        TVAPIManager.shared.fetchActor { actor in
-            self.actor = actor
+        TVAPIManager.shared.fetchCredit(api: .credit(id: 67915)) { credit in
+            self.credit = credit
             group.leave()
         }
         
         group.enter()
-        TVAPIManager.shared.fetchTVList(url: "tv/67915/recommendations?language=ko-KR") { recommend in
+        TVAPIManager.shared.fetchTV(api: .recommend(id: 67915)) { recommend in
             self.recommend = recommend
             group.leave()
         }
         
         group.notify(queue: .main) {
-            self.tableView.reloadData()
+            self.tvDetailView.tableView.reloadData()
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(self.detail.backdropPath)")
-            self.backdropImageView.kf.setImage(with: url)
-        }
-    }
-    
-    override func configureHierarchy() {
-        view.addSubview(backdropImageView)
-        view.addSubview(tableView)
-    }
-    
-    override func configureView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(TVMainInfoTableViewCell.self, forCellReuseIdentifier: TVMainInfoTableViewCell.identifier)
-        tableView.register(TVSubInfoTableViewCell.self, forCellReuseIdentifier: TVSubInfoTableViewCell.identifier)
-        tableView.register(TVTableViewCell.self, forCellReuseIdentifier: TVTableViewCell.identifier)
-    }
-    
-    override func configureConstraints() {
-        backdropImageView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(200)
-        }
-        
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(backdropImageView.snp.bottom)
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            self.tvDetailView.backdropImageView.kf.setImage(with: url)
         }
     }
 }
@@ -99,12 +76,12 @@ extension TVDetailViewController: UITableViewDataSource, UITableViewDelegate {
             
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: TVSubInfoTableViewCell.identifier, for: indexPath) as! TVSubInfoTableViewCell
-            cell.configureCell(detail: detail, actor: actor)
+            cell.configureCell(detail: detail, credit: credit)
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TVTableViewCell.identifier, for: indexPath) as! TVTableViewCell
-            cell.promotionLabel.text = "비슷한 콘텐츠"
+            cell.categoryLabel.text = "비슷한 콘텐츠"
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
             cell.collectionView.register(TVCollectionViewCell.self, forCellWithReuseIdentifier: TVCollectionViewCell.identifier)
@@ -126,19 +103,14 @@ extension TVDetailViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension TVDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return recommend.results.count
+        return recommend.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVCollectionViewCell.identifier, for: indexPath) as! TVCollectionViewCell
-        let row = recommend.results[indexPath.row]
-        if let poster = row.poster_path {
-            let url = URL(string: TVAPIManager.shared.imageeBaseURL + poster)
-            cell.posterImageView.kf.setImage(with: url)
-        } else {
-            let url = URL(string: TVAPIManager.shared.errorImageURL)
-            cell.posterImageView.kf.setImage(with: url)
-        }
+        let row = recommend[indexPath.row]
+        let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
+        cell.posterImageView.kf.setImage(with: url)
         return cell
     }
 }
