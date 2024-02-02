@@ -1,5 +1,5 @@
 //
-//  TVTableViewCell.swift
+//  BasicTableViewCell.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 1/30/24.
@@ -7,11 +7,18 @@
 
 import UIKit
 
-class TVTableViewCell: BaseTableViewCell {
+enum ViewType: CaseIterable {
+    case home
+    case detail
+}
+
+class BasicTableViewCell: BaseTableViewCell {
     let categoryLabel = PrimaryLabel()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
+    var type: ViewType = .home
     var list: [[Result]] = [[], [], []]
+    var recommend: [Result] = []
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,7 +37,8 @@ class TVTableViewCell: BaseTableViewCell {
         collectionView.backgroundColor = ColorStyle.backgroundColor
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(TVCollectionViewCell.self, forCellWithReuseIdentifier: TVCollectionViewCell.identifier)
+        collectionView.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.identifier)
+        collectionView.reloadData()
     }
     
     override func configureConstraints() {
@@ -47,17 +55,29 @@ class TVTableViewCell: BaseTableViewCell {
     }
 }
 
-extension TVTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension BasicTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list[collectionView.tag].count
+        switch type {
+        case .home: return list[collectionView.tag].count
+        case .detail: return recommend.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVCollectionViewCell.identifier, for: indexPath) as! TVCollectionViewCell
-        let row = list[collectionView.tag][indexPath.row]
-        let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
-        cell.posterImageView.kf.setImage(with: url)
-        return cell
+        switch type {
+        case .home:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as! BasicCollectionViewCell
+            let row = list[collectionView.tag][indexPath.row]
+            let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
+            cell.posterImageView.kf.setImage(with: url)
+            return cell
+        case .detail:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.identifier, for: indexPath) as! BasicCollectionViewCell
+            let row = recommend[indexPath.row]
+            let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
+            cell.posterImageView.kf.setImage(with: url)
+            return cell
+        }
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {

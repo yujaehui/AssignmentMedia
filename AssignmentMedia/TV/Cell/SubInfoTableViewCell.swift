@@ -1,5 +1,5 @@
 //
-//  TVSubInfoTableViewCell.swift
+//  SubInfoTableViewCell.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 1/31/24.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class TVSubInfoTableViewCell: BaseTableViewCell {
+class SubInfoTableViewCell: BaseTableViewCell {
     
     let posterImageView = PosterImageView(frame: .zero)
     let titleLabel = MiniTitleLabel()
     let networkLabel = InfoLabel()
     let creatorInfoLabel = InfoLabel()
     let creatorLabel = InfoLabel()
-    let creditInfoLabel = InfoLabel()
-    let creditLabel = InfoLabel()
+    let castInfoLabel = InfoLabel()
+    let castLabel = InfoLabel()
     let descriptionLabel = InfoLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -30,7 +30,7 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
         networkLabel.text = detail.networks.map { $0.name }.joined(separator: ", ")
         creatorLabel.text = detail.createdBy.map { $0.name }.joined(separator: ", ")
         let creditConut = min(5, credit.cast.count)
-        creditLabel.text = credit.cast.prefix(creditConut).map { $0.name }.joined(separator: ", ")
+        castLabel.text = credit.cast.prefix(creditConut).map { $0.name }.joined(separator: ", ")
         descriptionLabel.text = detail.overview
     }
     
@@ -44,15 +44,15 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
         contentView.addSubview(networkLabel)
         contentView.addSubview(creatorInfoLabel)
         contentView.addSubview(creatorLabel)
-        contentView.addSubview(creditInfoLabel)
-        contentView.addSubview(creditLabel)
+        contentView.addSubview(castInfoLabel)
+        contentView.addSubview(castLabel)
         contentView.addSubview(descriptionLabel)
     }
     
     override func configureView() {
         creatorInfoLabel.text = "크리에이터"
-        creditInfoLabel.text = "출연"
-        creditLabel.numberOfLines = 0
+        castInfoLabel.text = "출연"
+        castLabel.numberOfLines = 0
         descriptionLabel.numberOfLines = 0
     }
     
@@ -90,21 +90,21 @@ class TVSubInfoTableViewCell: BaseTableViewCell {
             make.height.equalTo(14)
         }
         
-        creditInfoLabel.snp.makeConstraints { make in
+        castInfoLabel.snp.makeConstraints { make in
             make.top.equalTo(creatorInfoLabel.snp.bottom).offset(4)
             make.leading.equalTo(posterImageView.snp.trailing).offset(16)
             make.width.equalTo(23)
             make.height.equalTo(14)
         }
         
-        creditLabel.snp.makeConstraints { make in
+        castLabel.snp.makeConstraints { make in
             make.top.equalTo(creatorLabel.snp.bottom).offset(4)
-            make.leading.equalTo(creditInfoLabel.snp.trailing).offset(8)
+            make.leading.equalTo(castInfoLabel.snp.trailing).offset(8)
             make.trailing.equalTo(contentView).inset(16)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(creditLabel.snp.bottom).offset(16)
+            make.top.equalTo(castLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView).inset(8)
             make.bottom.equalTo(contentView).inset(16)
         }

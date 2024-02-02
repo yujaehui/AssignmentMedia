@@ -1,5 +1,5 @@
 //
-//  TVCollectionViewCell.swift
+//  BasicCollectionViewCell.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 1/30/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVCollectionViewCell: BaseCollectionViewCell {
+class BasicCollectionViewCell: BaseCollectionViewCell {
     let posterImageView = PosterImageView(frame: .zero)
     
     override init(frame: CGRect) {

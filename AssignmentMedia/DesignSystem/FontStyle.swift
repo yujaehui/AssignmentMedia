@@ -12,6 +12,6 @@ enum FontStyle {
     static let miniTitle: UIFont = .boldSystemFont(ofSize: 15)
     static let info: UIFont = .systemFont(ofSize: 13)
     
-    static let primary: UIFont = .boldSystemFont(ofSize: 20)
+    static let primary: UIFont = .boldSystemFont(ofSize: 18)
     static let secondary: UIFont = .boldSystemFont(ofSize: 17)
 }

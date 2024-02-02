@@ -1,5 +1,5 @@
 //
-//  TVMainCollectionViewCell.swift
+//  MainCollectionViewCell.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 2/1/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVMainCollectionViewCell: BaseCollectionViewCell {
+class MainCollectionViewCell: BaseCollectionViewCell {
     let posterImageView = PosterImageView(frame: .zero)
     let titleLabel = MiniTitleLabel()
     

@@ -1,5 +1,5 @@
 //
-//  TVMainInfoTableViewCell.swift
+//  MainInfoTableViewCell.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 1/31/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVMainInfoTableViewCell: BaseTableViewCell {
+class MainInfoTableViewCell: BaseTableViewCell {
     
     let titleLabel = TitleLabel()
     let infoLabel = InfoLabel()

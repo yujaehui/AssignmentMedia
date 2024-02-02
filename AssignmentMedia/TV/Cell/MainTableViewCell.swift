@@ -1,5 +1,5 @@
 //
-//  TVMainTableViewCell.swift
+//  MainTableViewCell.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 1/31/24.
@@ -19,7 +19,7 @@ private enum Const {
     }
   }
 
-class TVMainTableViewCell: BaseTableViewCell {
+class MainTableViewCell: BaseTableViewCell {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
     var mainList: [Result] = []
@@ -40,7 +40,7 @@ class TVMainTableViewCell: BaseTableViewCell {
         collectionView.backgroundColor = ColorStyle.backgroundColor
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(TVMainCollectionViewCell.self, forCellWithReuseIdentifier: TVMainCollectionViewCell.identifier)
+        collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
 
         collectionView.contentInset = Const.collectionViewContentInset
         collectionView.contentInsetAdjustmentBehavior = .never
@@ -56,14 +56,14 @@ class TVMainTableViewCell: BaseTableViewCell {
     }
 }
 
-extension TVMainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let count = min(5, mainList.count)
         return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TVMainCollectionViewCell.identifier, for: indexPath) as! TVMainCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as! MainCollectionViewCell
         let row = mainList[indexPath.row]
         let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
         cell.posterImageView.kf.setImage(with: url)
@@ -81,7 +81,7 @@ extension TVMainTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     }
 }
 
-extension TVMainTableViewCell: UICollectionViewDelegateFlowLayout {
+extension MainTableViewCell: UICollectionViewDelegateFlowLayout {
   func scrollViewWillEndDragging(
     _ scrollView: UIScrollView,
     withVelocity velocity: CGPoint,

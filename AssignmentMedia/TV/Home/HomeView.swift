@@ -1,5 +1,5 @@
 //
-//  TVView.swift
+//  HomeView.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 2/1/24.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class TVView: BaseView {
+class HomeView: BaseView {
     let tableView: UITableView = {
         let view = UITableView()
-        view.register(TVMainTableViewCell.self, forCellReuseIdentifier: TVMainTableViewCell.identifier)
-        view.register(TVTableViewCell.self, forCellReuseIdentifier: TVTableViewCell.identifier)
-        view.register(TopTableViewCell.self, forCellReuseIdentifier: TopTableViewCell.identifier)
         view.backgroundColor = ColorStyle.backgroundColor
+        view.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.identifier)
+        view.register(BasicTableViewCell.self, forCellReuseIdentifier: BasicTableViewCell.identifier)
+        view.register(TopTableViewCell.self, forCellReuseIdentifier: TopTableViewCell.identifier)
         return view
     }()
 

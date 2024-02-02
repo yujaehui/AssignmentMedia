@@ -1,5 +1,5 @@
 //
-//  TVDetailView.swift
+//  DetailView.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 2/1/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class TVDetailView: BaseView {
+class DetailView: BaseView {
     let backdropImageView = UIImageView()
     let tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = ColorStyle.backgroundColor
-        view.register(TVMainInfoTableViewCell.self, forCellReuseIdentifier: TVMainInfoTableViewCell.identifier)
-        view.register(TVSubInfoTableViewCell.self, forCellReuseIdentifier: TVSubInfoTableViewCell.identifier)
-        view.register(TVTableViewCell.self, forCellReuseIdentifier: TVTableViewCell.identifier)
+        view.register(MainInfoTableViewCell.self, forCellReuseIdentifier: MainInfoTableViewCell.identifier)
+        view.register(SubInfoTableViewCell.self, forCellReuseIdentifier: SubInfoTableViewCell.identifier)
+        view.register(BasicTableViewCell.self, forCellReuseIdentifier: BasicTableViewCell.identifier)
         return view
     }()
     
