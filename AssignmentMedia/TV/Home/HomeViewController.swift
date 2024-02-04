@@ -35,12 +35,12 @@ class HomeViewController: BaseViewController {
     
     let tvView = HomeView()
     
-    var mainList: [Result] = []
-    var list: [[Result]] = [[], [], []]
-        
     override func loadView() {
         self.view = tvView
     }
+    
+    var mainList: [Result] = []
+    var list: [[Result]] = [[], [], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()

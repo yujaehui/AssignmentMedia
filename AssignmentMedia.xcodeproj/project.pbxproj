@@ -50,6 +50,8 @@
 		09DA23FA2B6BC5170092F537 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23F92B6BC5170092F537 /* MainCollectionViewCell.swift */; };
 		09DA23FC2B6BD6B20092F537 /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23FB2B6BD6B20092F537 /* TopCollectionViewCell.swift */; };
 		09DA23FE2B6BDBE00092F537 /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23FD2B6BDBE00092F537 /* TopTableViewCell.swift */; };
+		09DA24092B6F9D950092F537 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24082B6F9D950092F537 /* SearchView.swift */; };
+		09DA240B2B6F9DA50092F537 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA240A2B6F9DA50092F537 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		09DA23F92B6BC5170092F537 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		09DA23FB2B6BD6B20092F537 /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 		09DA23FD2B6BDBE00092F537 /* TopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
+		09DA24082B6F9D950092F537 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		09DA240A2B6F9DA50092F537 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +155,9 @@
 		09DA23852B68DBC00092F537 /* TV */ = {
 			isa = PBXGroup;
 			children = (
-				09DA24062B6CCBE20092F537 /* Detail */,
+				09DA24072B6F9D750092F537 /* Search */,
 				09DA24052B6CCBD50092F537 /* Home */,
+				09DA24062B6CCBE20092F537 /* Detail */,
 				09DA23F82B6BC4C00092F537 /* Cell */,
 			);
 			path = TV;
@@ -260,6 +265,15 @@
 				09DA23B82B6A16DC0092F537 /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		09DA24072B6F9D750092F537 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				09DA24082B6F9D950092F537 /* SearchView.swift */,
+				09DA240A2B6F9DA50092F537 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,8 +385,10 @@
 				09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */,
 				09DA23C72B6A1D920092F537 /* UIButton.Configuration+Extension.swift in Sources */,
 				09DA23FA2B6BC5170092F537 /* MainCollectionViewCell.swift in Sources */,
+				09DA240B2B6F9DA50092F537 /* SearchViewController.swift in Sources */,
 				09DA23DF2B6A67B90092F537 /* TitleLabel.swift in Sources */,
 				09DA23B92B6A16DC0092F537 /* DetailViewController.swift in Sources */,
+				09DA24092B6F9D950092F537 /* SearchView.swift in Sources */,
 				09DA23E72B6A6BEC0092F537 /* UIView+Extension.swift in Sources */,
 				09DA23F12B6B57A10092F537 /* HomeView.swift in Sources */,
 				09DA23AB2B69557B0092F537 /* MainTableViewCell.swift in Sources */,

@@ -26,6 +26,7 @@ class DetailViewController: BaseViewController {
         self.view = tvDetailView
     }
 
+    var id = 0
     var detail = SeriesDetailsModel(backdropPath: "", posterPath: "", name: "", date: "", episodeRunTime: [], networks: [], createdBy: [], overview: "")
     var credit = AggregateCreditsModel(cast: [])
     var recommend: [Result] = []
@@ -39,19 +40,19 @@ class DetailViewController: BaseViewController {
         let group = DispatchGroup()
         
         group.enter()
-        TVAPIManager.shared.request(type: SeriesDetailsModel.self, api: .detail(id: 67915)) { detail in
+        TVAPIManager.shared.request(type: SeriesDetailsModel.self, api: .detail(id: id)) { detail in
             self.detail = detail
             group.leave()
         }
         
         group.enter()
-        TVAPIManager.shared.request(type: AggregateCreditsModel.self, api: .credit(id: 67915)) { credit in
+        TVAPIManager.shared.request(type: AggregateCreditsModel.self, api: .credit(id: id)) { credit in
             self.credit = credit
             group.leave()
         }
         
         group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .recommend(id: 67915)) { recommend in
+        TVAPIManager.shared.request(type: TVModel.self, api: .recommend(id: id)) { recommend in
             self.recommend = recommend.results
             group.leave()
         }
