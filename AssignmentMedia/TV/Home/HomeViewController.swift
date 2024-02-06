@@ -32,7 +32,6 @@ enum BasicRowType: Int, CaseIterable {
 }
 
 class HomeViewController: BaseViewController {
-    
     let homeView = HomeView()
     
     override func loadView() {
@@ -44,7 +43,7 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         homeView.tableView.dataSource = self
         homeView.tableView.delegate = self
         
@@ -94,29 +93,29 @@ class HomeViewController: BaseViewController {
             group.leave()
         }
         
-//        group.enter()
-//        TVAPIManager.shared.request(type: TVModel.self, api: .airingToday) { main in
-//            self.mainList = main.results
-//            group.leave()
-//        }
+        //        group.enter()
+        //        TVAPIManager.shared.request(type: TVModel.self, api: .airingToday) { main in
+        //            self.mainList = main.results
+        //            group.leave()
+        //        }
         
-//        group.enter()
-//        TVAPIManager.shared.request(type: TVModel.self, api: .top) { top in
-//            self.list[BasicRowType.top.rawValue] = top.results
-//            group.leave()
-//        }
+        //        group.enter()
+        //        TVAPIManager.shared.request(type: TVModel.self, api: .top) { top in
+        //            self.list[BasicRowType.top.rawValue] = top.results
+        //            group.leave()
+        //        }
         
-//        group.enter()
-//        TVAPIManager.shared.request(type: TVModel.self, api: .trending) { trending in
-//            self.list[BasicRowType.trending.rawValue] = trending.results
-//            group.leave()
-//        }
+        //        group.enter()
+        //        TVAPIManager.shared.request(type: TVModel.self, api: .trending) { trending in
+        //            self.list[BasicRowType.trending.rawValue] = trending.results
+        //            group.leave()
+        //        }
         
-//        group.enter()
-//        TVAPIManager.shared.request(type: TVModel.self, api: .popular) { popular in
-//            self.list[BasicRowType.popular.rawValue] = popular.results
-//            group.leave()
-//        }
+        //        group.enter()
+        //        TVAPIManager.shared.request(type: TVModel.self, api: .popular) { popular in
+        //            self.list[BasicRowType.popular.rawValue] = popular.results
+        //            group.leave()
+        //        }
         
         group.notify(queue: .main) {
             self.homeView.tableView.reloadData()
@@ -141,6 +140,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case .main:
             let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.identifier, for: indexPath) as! MainTableViewCell
             cell.mainList = mainList
+            cell.delegate = self // 델리게이트 설정
             cell.collectionView.reloadData()
             return cell
         default:
@@ -148,6 +148,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             case .top:
                 let cell = tableView.dequeueReusableCell(withIdentifier: TopTableViewCell.identifier, for: indexPath) as! TopTableViewCell
                 cell.list = list
+                cell.delegate = self // 델리게이트 설정
                 cell.categoryLabel.text = BasicRowType.allCases[indexPath.row].category
                 cell.collectionView.tag = indexPath.row
                 cell.collectionView.reloadData()
@@ -155,6 +156,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: BasicTableViewCell.identifier, for: indexPath) as! BasicTableViewCell
                 cell.type = .home
+                cell.delegate = self // 델리게이트 설정
                 cell.list = list
                 cell.categoryLabel.text = BasicRowType.allCases[indexPath.row].category
                 cell.collectionView.tag = indexPath.row
@@ -169,5 +171,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         case .main: return UIScreen.main.bounds.width*5/4
         case .basic: return 210
         }
+    }
+}
+
+extension HomeViewController: MainTableViewCellDelegate, BasicTableViewCellDelegate, TopTableViewCellDelegate {
+    func didSelectItem(withID id: Int) {
+        let detailViewController = DetailViewController()
+        detailViewController.id = id
+        present(detailViewController, animated: true)
     }
 }

@@ -19,11 +19,11 @@ class ViewController: UITabBarController {
     }
 
     private func addVC() {
-        let firstVC = UINavigationController(rootViewController: HomeViewController())
-        firstVC.tabBarItem = UITabBarItem(title: "1", image: UIImage(systemName: "1.circle"), selectedImage: UIImage(systemName: "1.circle"))
+        let firstVC = HomeViewController()
+        firstVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
         
-        let secondVC = UINavigationController(rootViewController: DetailViewController())
-        secondVC.tabBarItem = UITabBarItem(title: "2", image: UIImage(systemName: "2.circle"), selectedImage: UIImage(systemName: "2.circle"))
+        let secondVC = SearchViewController()
+        secondVC.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         
         self.viewControllers = [firstVC, secondVC]
     }

@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol BasicTableViewCellDelegate: AnyObject {
+    func didSelectItem(withID id: Int)
+}
+
 enum ViewType: CaseIterable {
     case home
     case detail
 }
 
 class BasicTableViewCell: BaseTableViewCell {
+    weak var delegate: BasicTableViewCellDelegate?
+
     let categoryLabel = PrimaryLabel()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
@@ -77,6 +83,17 @@ extension BasicTableViewCell: UICollectionViewDataSource, UICollectionViewDelega
             let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
             cell.posterImageView.kf.setImage(with: url)
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch type {
+        case .home:
+            let id = list[collectionView.tag][indexPath.row].id
+            delegate?.didSelectItem(withID: id)
+        case .detail:
+            let id = recommend[indexPath.row].id
+            delegate?.didSelectItem(withID: id)
         }
     }
     

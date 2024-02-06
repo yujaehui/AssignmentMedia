@@ -113,4 +113,11 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.posterImageView.kf.setImage(with: url)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("sss")
+        let detailViewController = DetailViewController()
+        detailViewController.id = recommend[indexPath.row].id
+        present(detailViewController, animated: true)
+    }
 }

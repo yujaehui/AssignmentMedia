@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol TopTableViewCellDelegate: AnyObject {
+    func didSelectItem(withID id: Int)
+}
+
 class TopTableViewCell: BaseTableViewCell {
+    weak var delegate: TopTableViewCellDelegate?
+    
     let categoryLabel = PrimaryLabel()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
@@ -59,6 +65,11 @@ extension TopTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate
         cell.posterImageView.kf.setImage(with: url)
         cell.rangkingLabel.text = "\(indexPath.row + 1)"
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = list[collectionView.tag][indexPath.row].id
+        delegate?.didSelectItem(withID: id)
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {

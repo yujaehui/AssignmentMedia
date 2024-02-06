@@ -50,7 +50,6 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("GGG")
         let vc = DetailViewController()
         vc.id = searchList[indexPath.row].id
         present(vc, animated: true)
