@@ -33,10 +33,10 @@ enum BasicRowType: Int, CaseIterable {
 
 class HomeViewController: BaseViewController {
     
-    let tvView = HomeView()
+    let homeView = HomeView()
     
     override func loadView() {
-        self.view = tvView
+        self.view = homeView
     }
     
     var mainList: [Result] = []
@@ -45,16 +45,28 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        tvView.tableView.dataSource = self
-        tvView.tableView.delegate = self
+        homeView.tableView.dataSource = self
+        homeView.tableView.delegate = self
         
         let group = DispatchGroup()
         
-        group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .airingToday) { main in
-            self.mainList = main.results
-            group.leave()
+        TVSessionManager.shared.fetchTV { main, error in
+            if error == nil {
+                guard let main = main else { return }
+                self.mainList = main.results
+                DispatchQueue.main.async {
+                    self.homeView.tableView.reloadData()
+                }
+            } else {
+                // error 분기 처리, alert, toast
+            }
         }
+        
+//        group.enter()
+//        TVAPIManager.shared.request(type: TVModel.self, api: .airingToday) { main in
+//            self.mainList = main.results
+//            group.leave()
+//        }
         
         group.enter()
         TVAPIManager.shared.request(type: TVModel.self, api: .top) { top in
@@ -75,7 +87,7 @@ class HomeViewController: BaseViewController {
         }
         
         group.notify(queue: .main) {
-            self.tvView.tableView.reloadData()
+            self.homeView.tableView.reloadData()
         }
     }
 }
