@@ -50,16 +50,48 @@ class HomeViewController: BaseViewController {
         
         let group = DispatchGroup()
         
-        TVSessionManager.shared.fetchTV { main, error in
+        group.enter()
+        TVSessionManager.shared.fetchTV(api: .airingToday) { main, error in
             if error == nil {
                 guard let main = main else { return }
                 self.mainList = main.results
-                DispatchQueue.main.async {
-                    self.homeView.tableView.reloadData()
-                }
             } else {
                 // error 분기 처리, alert, toast
             }
+            group.leave()
+        }
+        
+        group.enter()
+        TVSessionManager.shared.fetchTV(api: .top) { top, error in
+            if error == nil {
+                guard let top = top else { return }
+                self.list[BasicRowType.top.rawValue] = top.results
+            } else {
+                // error 분기 처리, alert, toast
+            }
+            group.leave()
+        }
+        
+        group.enter()
+        TVSessionManager.shared.fetchTV(api: .trending) { trending, error in
+            if error == nil {
+                guard let trending = trending else { return }
+                self.list[BasicRowType.trending.rawValue] = trending.results
+            } else {
+                // error 분기 처리, alert, toast
+            }
+            group.leave()
+        }
+        
+        group.enter()
+        TVSessionManager.shared.fetchTV(api: .popular) { popular, error in
+            if error == nil {
+                guard let popular = popular else { return }
+                self.list[BasicRowType.popular.rawValue] = popular.results
+            } else {
+                // error 분기 처리, alert, toast
+            }
+            group.leave()
         }
         
 //        group.enter()
@@ -68,23 +100,23 @@ class HomeViewController: BaseViewController {
 //            group.leave()
 //        }
         
-        group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .top) { top in
-            self.list[BasicRowType.top.rawValue] = top.results
-            group.leave()
-        }
+//        group.enter()
+//        TVAPIManager.shared.request(type: TVModel.self, api: .top) { top in
+//            self.list[BasicRowType.top.rawValue] = top.results
+//            group.leave()
+//        }
         
-        group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .trending) { trending in
-            self.list[BasicRowType.trending.rawValue] = trending.results
-            group.leave()
-        }
+//        group.enter()
+//        TVAPIManager.shared.request(type: TVModel.self, api: .trending) { trending in
+//            self.list[BasicRowType.trending.rawValue] = trending.results
+//            group.leave()
+//        }
         
-        group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .popular) { popular in
-            self.list[BasicRowType.popular.rawValue] = popular.results
-            group.leave()
-        }
+//        group.enter()
+//        TVAPIManager.shared.request(type: TVModel.self, api: .popular) { popular in
+//            self.list[BasicRowType.popular.rawValue] = popular.results
+//            group.leave()
+//        }
         
         group.notify(queue: .main) {
             self.homeView.tableView.reloadData()
