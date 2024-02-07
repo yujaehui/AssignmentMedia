@@ -53,6 +53,15 @@
 		09DA24092B6F9D950092F537 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24082B6F9D950092F537 /* SearchView.swift */; };
 		09DA240B2B6F9DA50092F537 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA240A2B6F9DA50092F537 /* SearchViewController.swift */; };
 		09DA24112B71E3BE0092F537 /* TVSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24102B71E3BE0092F537 /* TVSessionManager.swift */; };
+		09DA24E52B737D650092F537 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24E42B737D650092F537 /* ProfileView.swift */; };
+		09DA24E72B737D730092F537 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24E62B737D730092F537 /* ProfileViewController.swift */; };
+		09DA24E92B7382210092F537 /* ProfileImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24E82B7382210092F537 /* ProfileImageTableViewCell.swift */; };
+		09DA24EB2B73822B0092F537 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24EA2B73822B0092F537 /* ProfileInfoTableViewCell.swift */; };
+		09DA24ED2B73AD240092F537 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24EC2B73AD240092F537 /* UILabel+Extension.swift */; };
+		09DA24EF2B73B3DB0092F537 /* NameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24EE2B73B3DB0092F537 /* NameSettingViewController.swift */; };
+		09DA24F12B73B3F00092F537 /* NameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24F02B73B3F00092F537 /* NameSettingView.swift */; };
+		09DA24F32B73B98D0092F537 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24F22B73B98D0092F537 /* UITextField+Extension.swift */; };
+		09DA24FB2B73D09B0092F537 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA24FA2B73D09B0092F537 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +109,15 @@
 		09DA24082B6F9D950092F537 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		09DA240A2B6F9DA50092F537 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		09DA24102B71E3BE0092F537 /* TVSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSessionManager.swift; sourceTree = "<group>"; };
+		09DA24E42B737D650092F537 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		09DA24E62B737D730092F537 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		09DA24E82B7382210092F537 /* ProfileImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageTableViewCell.swift; sourceTree = "<group>"; };
+		09DA24EA2B73822B0092F537 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
+		09DA24EC2B73AD240092F537 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		09DA24EE2B73B3DB0092F537 /* NameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingViewController.swift; sourceTree = "<group>"; };
+		09DA24F02B73B3F00092F537 /* NameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingView.swift; sourceTree = "<group>"; };
+		09DA24F22B73B98D0092F537 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		09DA24FA2B73D09B0092F537 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +155,7 @@
 		09DA23702B68DBB60092F537 /* AssignmentMedia */ = {
 			isa = PBXGroup;
 			children = (
+				09DA24F72B73D0680092F537 /* UserDefaultsManager */,
 				09DA23C82B6A1E5D0092F537 /* CustomView */,
 				09DA23BA2B6A16E60092F537 /* Base */,
 				09DA23972B68E1350092F537 /* Network */,
@@ -157,6 +176,7 @@
 		09DA23852B68DBC00092F537 /* TV */ = {
 			isa = PBXGroup;
 			children = (
+				09DA24E32B737D560092F537 /* Profile */,
 				09DA24072B6F9D750092F537 /* Search */,
 				09DA24052B6CCBD50092F537 /* Home */,
 				09DA24062B6CCBE20092F537 /* Detail */,
@@ -195,6 +215,8 @@
 			children = (
 				09DA23C62B6A1D920092F537 /* UIButton.Configuration+Extension.swift */,
 				09DA23E62B6A6BEC0092F537 /* UIView+Extension.swift */,
+				09DA24EC2B73AD240092F537 /* UILabel+Extension.swift */,
+				09DA24F22B73B98D0092F537 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -277,6 +299,27 @@
 				09DA240A2B6F9DA50092F537 /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		09DA24E32B737D560092F537 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				09DA24E42B737D650092F537 /* ProfileView.swift */,
+				09DA24E62B737D730092F537 /* ProfileViewController.swift */,
+				09DA24E82B7382210092F537 /* ProfileImageTableViewCell.swift */,
+				09DA24EA2B73822B0092F537 /* ProfileInfoTableViewCell.swift */,
+				09DA24F02B73B3F00092F537 /* NameSettingView.swift */,
+				09DA24EE2B73B3DB0092F537 /* NameSettingViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		09DA24F72B73D0680092F537 /* UserDefaultsManager */ = {
+			isa = PBXGroup;
+			children = (
+				09DA24FA2B73D09B0092F537 /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaultsManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,14 +406,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				09DA23FC2B6BD6B20092F537 /* TopCollectionViewCell.swift in Sources */,
+				09DA24E52B737D650092F537 /* ProfileView.swift in Sources */,
 				09DA23EF2B6B397E0092F537 /* BaseView.swift in Sources */,
 				09DA23C42B6A1BE00092F537 /* BaseTableViewCell.swift in Sources */,
+				09DA24E92B7382210092F537 /* ProfileImageTableViewCell.swift in Sources */,
 				09DA23DB2B6A64840092F537 /* MiniTitleLabel.swift in Sources */,
 				09DA24112B71E3BE0092F537 /* TVSessionManager.swift in Sources */,
 				09DA23762B68DBB60092F537 /* ViewController.swift in Sources */,
 				09DA239B2B68E1AC0092F537 /* APIKey.swift in Sources */,
 				09DA23FE2B6BDBE00092F537 /* TopTableViewCell.swift in Sources */,
 				09DA23D72B6A63710092F537 /* ColorStyle.swift in Sources */,
+				09DA24ED2B73AD240092F537 /* UILabel+Extension.swift in Sources */,
+				09DA24FB2B73D09B0092F537 /* UserDefaultsManager.swift in Sources */,
 				09DA23722B68DBB60092F537 /* AppDelegate.swift in Sources */,
 				09DA23942B68DD660092F537 /* BasicTableViewCell.swift in Sources */,
 				09DA23CC2B6A3C3A0092F537 /* SeriesDetailsModel.swift in Sources */,
@@ -378,13 +425,18 @@
 				09DA23F72B6B68590092F537 /* TVAPI.swift in Sources */,
 				09DA23E12B6A68330092F537 /* PrimaryLabel.swift in Sources */,
 				09DA239F2B68E3AE0092F537 /* TVAPIManager.swift in Sources */,
+				09DA24F32B73B98D0092F537 /* UITextField+Extension.swift in Sources */,
 				09DA23BC2B6A16F00092F537 /* BaseViewController.swift in Sources */,
 				09DA23E32B6A683B0092F537 /* SecondaryLabel.swift in Sources */,
 				09DA23CE2B6A3EE20092F537 /* AggregateCreditsModel.swift in Sources */,
+				09DA24EB2B73822B0092F537 /* ProfileInfoTableViewCell.swift in Sources */,
 				09DA23DD2B6A65040092F537 /* InfoLabel.swift in Sources */,
+				09DA24F12B73B3F00092F537 /* NameSettingView.swift in Sources */,
 				09DA23D02B6A61060092F537 /* BaseCollectionViewCell.swift in Sources */,
+				09DA24E72B737D730092F537 /* ProfileViewController.swift in Sources */,
 				09DA23F32B6B57B60092F537 /* DetailView.swift in Sources */,
 				09DA23872B68DC120092F537 /* HomeViewController.swift in Sources */,
+				09DA24EF2B73B3DB0092F537 /* NameSettingViewController.swift in Sources */,
 				09DA23962B68E02C0092F537 /* BasicCollectionViewCell.swift in Sources */,
 				09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */,
 				09DA23C72B6A1D920092F537 /* UIButton.Configuration+Extension.swift in Sources */,
