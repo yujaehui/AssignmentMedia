@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class TVAPIManager {
+final class TVAPIManager {
     static let shared = TVAPIManager()
     init() {}
     

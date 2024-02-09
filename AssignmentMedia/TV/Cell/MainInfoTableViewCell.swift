@@ -7,17 +7,12 @@
 
 import UIKit
 
-class MainInfoTableViewCell: BaseTableViewCell {
-    
-    let titleLabel = TitleLabel()
-    let infoLabel = InfoLabel()
+final class MainInfoTableViewCell: BaseTableViewCell {
+    let titleLabel = BasicLabel(type: .title)
+    let infoLabel = BasicLabel(type: .info)
     let heartButton = UIButton()
     let shareButton = UIButton()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
+
     func configureCell(detail: SeriesDetailsModel) {
         titleLabel.text = detail.name
         if detail.episodeRunTime.isEmpty {
@@ -25,10 +20,6 @@ class MainInfoTableViewCell: BaseTableViewCell {
         } else {
             infoLabel.text = "\(detail.date) · \(detail.episodeRunTime.first!)분"
         }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func configureHierarchy() {

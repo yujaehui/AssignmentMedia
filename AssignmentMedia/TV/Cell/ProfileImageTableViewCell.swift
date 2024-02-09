@@ -8,28 +8,19 @@
 import UIKit
 import SnapKit
 
-class ProfileImageTableViewCell: BaseTableViewCell {
-    let profileImageView = UIImageView()
+final class ProfileImageTableViewCell: BaseTableViewCell {
+    let profileImageView = ProfileImageView(frame: .zero)
     let profileImageChangeButton = UIButton()
-    
+        
     override func configureHierarchy() {
         addSubview(profileImageView)
         addSubview(profileImageChangeButton)
     }
     
     override func configureView() {
-        profileImageView.image = UIImage(systemName: "person.circle.fill")
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.tintColor = .gray
-        profileImageView.backgroundColor = .white
-        
-        profileImageView.layer.cornerRadius = 50
-        profileImageView.clipsToBounds = true
-        
         profileImageChangeButton.setTitle("프로필 사진 수정", for: .normal)
         profileImageChangeButton.setTitleColor(.systemBlue, for: .normal)
-        profileImageChangeButton.titleLabel?.font = .boldSystemFont(ofSize: 14)
-
+        profileImageChangeButton.titleLabel?.font = FontStyle.miniTitle
     }
     
     override func configureConstraints() {

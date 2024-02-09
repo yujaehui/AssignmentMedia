@@ -1,5 +1,5 @@
 //
-//  MiniTitleLabel.swift
+//  PosterImageView.swift
 //  AssignmentMedia
 //
 //  Created by Jaehui Yu on 1/31/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MiniTitleLabel: UILabel {
+final class PosterImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
@@ -17,9 +17,8 @@ class MiniTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
-        textColor = ColorStyle.mainColor
-        font = FontStyle.miniTitle
+    private func configureView() {
+        layer.cornerRadius = 5
+        clipsToBounds = true
     }
 }
-

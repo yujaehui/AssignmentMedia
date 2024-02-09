@@ -14,7 +14,7 @@ enum ErrorType: Error {
     case invalidData
 }
 
-class TVSessionManager {
+final class TVSessionManager {
     static let shared = TVSessionManager()
     private init() {}
     

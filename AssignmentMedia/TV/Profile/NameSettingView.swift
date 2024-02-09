@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class NameSettingView: BaseView {
+final class NameSettingView: BaseView {
     let inputLabel = UILabel()
     let inputTextField = UITextField()
     
@@ -20,7 +20,6 @@ class NameSettingView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
         inputTextField.underLine(viewHeight: inputTextField.frame.height, viewWidth: inputTextField.frame.width)
-        
     }
     
     override func configureView() {

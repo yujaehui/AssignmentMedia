@@ -16,23 +16,13 @@ enum ViewType: CaseIterable {
     case detail
 }
 
-class BasicTableViewCell: BaseTableViewCell {
+final class BasicTableViewCell: BaseTableViewCell {
     weak var delegate: BasicTableViewCellDelegate?
-
-    let categoryLabel = PrimaryLabel()
+    let categoryLabel = BasicLabel(type: .primary)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-    
     var type: ViewType = .home
     var list: [[Result]] = [[], [], []]
     var recommend: [Result] = []
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func configureHierarchy() {
         contentView.addSubview(categoryLabel)
@@ -44,7 +34,6 @@ class BasicTableViewCell: BaseTableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.identifier)
-        collectionView.reloadData()
     }
     
     override func configureConstraints() {
@@ -97,7 +86,7 @@ extension BasicTableViewCell: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .init(width: 120, height: 160)
         layout.minimumLineSpacing = 10

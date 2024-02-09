@@ -11,7 +11,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = ColorStyle.backgroundColor
+        backgroundColor = ColorStyle.backgroundColor
         configureHierarchy()
         configureView()
         configureConstraints()
@@ -21,15 +21,7 @@ class BaseCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
-        
-    }
-    
-    func configureView() {
-        
-    }
-    
-    func configureConstraints() {
-        
-    }
+    func configureHierarchy() {}
+    func configureView() {}
+    func configureConstraints() {}
 }

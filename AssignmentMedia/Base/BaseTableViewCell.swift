@@ -11,7 +11,7 @@ class BaseTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = ColorStyle.backgroundColor
+        backgroundColor = ColorStyle.backgroundColor
         configureHierarchy()
         configureView()
         configureConstraints()
@@ -21,15 +21,7 @@ class BaseTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
-        
-    }
-    
-    func configureView() {
-        
-    }
-    
-    func configureConstraints() {
-        
-    }
+    func configureHierarchy() {}
+    func configureView() {}
+    func configureConstraints() {}
 }

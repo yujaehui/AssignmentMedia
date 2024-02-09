@@ -18,24 +18,25 @@ enum DetailCellType: Int, CaseIterable {
     }
 }
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
+    weak var delegate: BasicTableViewCellDelegate?
     
-    let tvDetailView = DetailView()
+    private let detailView = DetailView()
+    
+    var id = 0
+    private var detail = SeriesDetailsModel(backdropPath: "", posterPath: "", name: "", date: "", episodeRunTime: [], networks: [], createdBy: [], overview: "")
+    private var credit = AggregateCreditsModel(cast: [])
+    private var recommend: [Result] = []
     
     override func loadView() {
-        self.view = tvDetailView
+        self.view = detailView
     }
-
-    var id = 0
-    var detail = SeriesDetailsModel(backdropPath: "", posterPath: "", name: "", date: "", episodeRunTime: [], networks: [], createdBy: [], overview: "")
-    var credit = AggregateCreditsModel(cast: [])
-    var recommend: [Result] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tvDetailView.tableView.dataSource = self
-        tvDetailView.tableView.delegate = self
+        detailView.tableView.dataSource = self
+        detailView.tableView.delegate = self
         
         let group = DispatchGroup()
         
@@ -58,10 +59,25 @@ class DetailViewController: BaseViewController {
         }
         
         group.notify(queue: .main) {
-            self.tvDetailView.tableView.reloadData()
+            self.detailView.tableView.reloadData()
             let url = URL(string: TVAPIManager.shared.imageeBaseURL + self.detail.backdropPath)
-            self.tvDetailView.backdropImageView.kf.setImage(with: url)
+            self.detailView.backdropImageView.kf.setImage(with: url)
         }
+        
+        detailView.dismissButton.addTarget(self, action: #selector(dismissButtonClicked), for: .touchUpInside)
+        detailView.xButton.addTarget(self, action: #selector(xButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func dismissButtonClicked() {
+        dismiss(animated: true)
+    }
+    
+    @objc private func xButtonClicked() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let vc = ViewController()
+        sceneDelegate?.window?.rootViewController = vc
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
 }
 
@@ -87,12 +103,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             cell.categoryLabel.text = DetailCellType.category
             cell.collectionView.tag = 0
             cell.collectionView.reloadData()
+            cell.delegate = self
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         switch DetailCellType.allCases[indexPath.row] {
         case .mainInfo: return UITableView.automaticDimension
         case .subInfo: return UITableView.automaticDimension
@@ -113,11 +129,15 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.posterImageView.kf.setImage(with: url)
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("sss")
-        let detailViewController = DetailViewController()
-        detailViewController.id = recommend[indexPath.row].id
-        present(detailViewController, animated: true)
+}
+
+extension DetailViewController: BasicTableViewCellDelegate {
+    func didSelectItem(withID id: Int) {
+        let vc = DetailViewController()
+        vc.id = id
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
+    
+    
 }

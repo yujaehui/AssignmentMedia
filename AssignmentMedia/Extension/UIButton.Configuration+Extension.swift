@@ -22,7 +22,31 @@ extension UIButton.Configuration {
         config.imagePlacement = .top
         
         config.baseForegroundColor = ColorStyle.subColor
-        config.baseBackgroundColor = ColorStyle.backgroundColor
+        config.baseBackgroundColor = .clear
+        
+        return config
+    }
+    
+    static func dismissStyle() -> UIButton.Configuration {
+        var config = UIButton.Configuration.filled()
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)
+        config.image = UIImage(systemName: "chevron.down", withConfiguration: imageConfig)
+        
+        config.baseForegroundColor = ColorStyle.mainColor
+        config.baseBackgroundColor = .clear
+        
+        return config
+    }
+    
+    static func xStyle() -> UIButton.Configuration {
+        var config = UIButton.Configuration.filled()
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)
+        config.image = UIImage(systemName: "xmark", withConfiguration: imageConfig)
+        
+        config.baseForegroundColor = ColorStyle.mainColor
+        config.baseBackgroundColor = .clear
         
         return config
     }

@@ -31,21 +31,25 @@ enum BasicRowType: Int, CaseIterable {
     }
 }
 
-class HomeViewController: BaseViewController {
-    let homeView = HomeView()
+final class HomeViewController: BaseViewController {
+    private let homeView = HomeView()
     
     override func loadView() {
         self.view = homeView
     }
     
-    var mainList: [Result] = []
-    var list: [[Result]] = [[], [], []]
+    private var mainList: [Result] = []
+    private var list: [[Result]] = [[], [], []]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         homeView.tableView.dataSource = self
         homeView.tableView.delegate = self
+        
+        navigationItem.title = "J-MEDIA"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationItem.backButtonTitle = ""
         
         let group = DispatchGroup()
         
@@ -176,8 +180,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension HomeViewController: MainTableViewCellDelegate, BasicTableViewCellDelegate, TopTableViewCellDelegate {
     func didSelectItem(withID id: Int) {
-        let detailViewController = DetailViewController()
-        detailViewController.id = id
-        present(detailViewController, animated: true)
+        let vc = DetailViewController()
+        vc.id = id
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }

@@ -7,8 +7,18 @@
 
 import UIKit
 
-class DetailView: BaseView {
+final class DetailView: BaseView {
     let backdropImageView = UIImageView()
+    let dismissButton: UIButton = {
+        let view = UIButton()
+        view.configuration = .dismissStyle()
+        return view
+    }()
+    let xButton: UIButton = {
+        let view = UIButton()
+        view.configuration = .xStyle()
+        return view
+    }()
     let tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = ColorStyle.backgroundColor
@@ -20,6 +30,8 @@ class DetailView: BaseView {
     
     override func configureHierarchy() {
         addSubview(backdropImageView)
+        addSubview(dismissButton)
+        addSubview(xButton)
         addSubview(tableView)
     }
     
@@ -27,6 +39,16 @@ class DetailView: BaseView {
         backdropImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(200)
+        }
+        
+        dismissButton.snp.makeConstraints { make in
+            make.top.leading.equalTo(backdropImageView).inset(8)
+            make.size.equalTo(40)
+        }
+        
+        xButton.snp.makeConstraints { make in
+            make.top.trailing.equalTo(backdropImageView).inset(8)
+            make.size.equalTo(40)
         }
         
         tableView.snp.makeConstraints { make in

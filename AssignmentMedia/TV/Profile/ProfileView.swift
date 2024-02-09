@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileView: BaseView {
+final class ProfileView: BaseView {
     let tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = ColorStyle.backgroundColor
@@ -20,10 +20,6 @@ class ProfileView: BaseView {
     
     override func configureHierarchy() {
         addSubview(tableView)
-    }
-    
-    override func configureView() {
-        
     }
     
     override func configureConstraints() {

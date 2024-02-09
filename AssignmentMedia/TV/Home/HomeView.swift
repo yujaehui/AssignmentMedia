@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeView: BaseView {
+final class HomeView: BaseView {
     let tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = ColorStyle.backgroundColor

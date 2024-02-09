@@ -11,21 +11,11 @@ protocol TopTableViewCellDelegate: AnyObject {
     func didSelectItem(withID id: Int)
 }
 
-class TopTableViewCell: BaseTableViewCell {
+final class TopTableViewCell: BaseTableViewCell {
     weak var delegate: TopTableViewCellDelegate?
-    
-    let categoryLabel = PrimaryLabel()
+    let categoryLabel = BasicLabel(type: .primary)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-    
     var list: [[Result]] = [[], [], []]
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func configureHierarchy() {
         contentView.addSubview(categoryLabel)
@@ -72,7 +62,7 @@ extension TopTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate
         delegate?.didSelectItem(withID: id)
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = .init(width: 185, height: 160)
         layout.minimumLineSpacing = 10

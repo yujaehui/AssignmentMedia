@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class ProfileInfoTableViewCell: BaseTableViewCell {
-    let infoLabel = UILabel()
-    let userLabel = UILabel()
+final class ProfileInfoTableViewCell: BaseTableViewCell {
+    let infoLabel = BasicLabel(type: .secodary)
+    let userLabel = BasicLabel(type: .secodary)
     
     override func configureHierarchy() {
         addSubview(infoLabel)
@@ -20,13 +20,6 @@ class ProfileInfoTableViewCell: BaseTableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         userLabel.underLine(viewHeight: userLabel.frame.height, viewWidth: userLabel.frame.width)
-    }
-    
-    override func configureView() {
-        infoLabel.textColor = ColorStyle.mainColor
-        infoLabel.font = .boldSystemFont(ofSize: 16)
-        userLabel.textColor = ColorStyle.mainColor
-        userLabel.font = .boldSystemFont(ofSize: 16)
     }
     
     override func configureConstraints() {

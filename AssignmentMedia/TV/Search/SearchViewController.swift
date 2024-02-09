@@ -7,22 +7,25 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
+    private let searchView = SearchView()
     
-    let searchView = SearchView()
+    private var searchList: [Result] = []
     
     override func loadView() {
         self.view = searchView
     }
     
-    var searchList: [Result] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchView.searchBar.delegate = self
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
+        
+        navigationItem.title = "검색"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationItem.backButtonTitle = ""
     }
 }
 
@@ -51,9 +54,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailViewController()
+        vc.modalPresentationStyle = .fullScreen
         vc.id = searchList[indexPath.row].id
         present(vc, animated: true)
     }
-    
-    
 }

@@ -9,6 +9,6 @@ import UIKit
 
 enum ColorStyle {
     static let mainColor: UIColor = .white
-    static let subColor: UIColor = .systemGray2
+    static let subColor: UIColor = .lightGray
     static let backgroundColor: UIColor = .black
 }

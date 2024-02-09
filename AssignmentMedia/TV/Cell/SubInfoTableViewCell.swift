@@ -7,21 +7,15 @@
 
 import UIKit
 
-class SubInfoTableViewCell: BaseTableViewCell {
-    
+final class SubInfoTableViewCell: BaseTableViewCell {
     let posterImageView = PosterImageView(frame: .zero)
-    let titleLabel = MiniTitleLabel()
-    let networkLabel = InfoLabel()
-    let creatorInfoLabel = InfoLabel()
-    let creatorLabel = InfoLabel()
-    let castInfoLabel = InfoLabel()
-    let castLabel = InfoLabel()
-    let descriptionLabel = InfoLabel()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = ColorStyle.backgroundColor.withAlphaComponent(0.9)
-    }
+    let titleLabel = BasicLabel(type: .minTitle)
+    let networkLabel = BasicLabel(type: .info)
+    let creatorInfoLabel = BasicLabel(type: .info)
+    let creatorLabel = BasicLabel(type: .info)
+    let castInfoLabel = BasicLabel(type: .info)
+    let castLabel = BasicLabel(type: .info)
+    let descriptionLabel = BasicLabel(type: .info)
     
     func configureCell(detail: SeriesDetailsModel, credit: AggregateCreditsModel) {
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(detail.posterPath)")
@@ -32,6 +26,11 @@ class SubInfoTableViewCell: BaseTableViewCell {
         let creditConut = min(5, credit.cast.count)
         castLabel.text = credit.cast.prefix(creditConut).map { $0.name }.joined(separator: ", ")
         descriptionLabel.text = detail.overview
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = ColorStyle.mainColor.withAlphaComponent(0.1)
     }
     
     required init?(coder: NSCoder) {
@@ -109,6 +108,4 @@ class SubInfoTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(contentView).inset(16)
         }
     }
-    
-    
 }

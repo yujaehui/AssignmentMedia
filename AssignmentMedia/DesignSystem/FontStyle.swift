@@ -13,5 +13,5 @@ enum FontStyle {
     static let info: UIFont = .systemFont(ofSize: 13)
     
     static let primary: UIFont = .boldSystemFont(ofSize: 18)
-    static let secondary: UIFont = .boldSystemFont(ofSize: 17)
+    static let secondary: UIFont = .boldSystemFont(ofSize: 16)
 }

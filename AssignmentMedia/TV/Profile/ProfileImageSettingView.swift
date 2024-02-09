@@ -1,16 +1,17 @@
 //
-//  SearchView.swift
+//  ProfileImageSettingView.swift
 //  AssignmentMedia
 //
-//  Created by Jaehui Yu on 2/4/24.
+//  Created by Jaehui Yu on 2/9/24.
 //
 
 import UIKit
 
-final class SearchView: BaseView {
+final class ProfileImageSettingView: BaseView {
+    let selectProfileImageView = UIImageView()
     let searchBar: UISearchBar = {
         let view = UISearchBar()
-        view.searchTextField.attributedPlaceholder = NSAttributedString(string: "제목을 검색하세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        view.searchTextField.attributedPlaceholder = NSAttributedString(string: "이미지를 검색하세요.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         return view
     }()
     let collectionView: UICollectionView = {
@@ -20,26 +21,42 @@ final class SearchView: BaseView {
         return view
     }()
     
+    
     private static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 4)
         let itemSizeWidth = cellWidth / 3
-        layout.itemSize = CGSize(width: itemSizeWidth, height: itemSizeWidth*4/3)
+        layout.itemSize = CGSize(width: itemSizeWidth, height: itemSizeWidth)
         layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         return layout
     }
     
+    
     override func configureHierarchy() {
+        addSubview(selectProfileImageView)
         addSubview(searchBar)
         addSubview(collectionView)
     }
     
+    override func configureView() {
+        selectProfileImageView.contentMode = .scaleToFill
+        selectProfileImageView.tintColor = .gray
+        selectProfileImageView.backgroundColor = .white
+    }
+    
     override func configureConstraints() {
-        searchBar.snp.makeConstraints { make in
+        selectProfileImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            make.width.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(selectProfileImageView.snp.width)
+        }
+        
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(selectProfileImageView.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(44)
         }
         

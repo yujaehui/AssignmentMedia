@@ -7,9 +7,8 @@
 
 import UIKit
 
-class NameSettingViewController: UIViewController {
-    
-    let nameSettingView = NameSettingView()
+final class NameSettingViewController: UIViewController {
+    private let nameSettingView = NameSettingView()
     
     var name: ((String) -> Void)?
     var type: profileInfoType = .name
@@ -30,17 +29,15 @@ class NameSettingViewController: UIViewController {
         nameSettingView.inputLabel.text = type.rawValue
         nameSettingView.inputTextField.text = userText
         nameSettingView.inputTextField.addTarget(self, action: #selector(inputTextFieldChanged), for: .allEvents)
-
-
     }
     
-    @objc func completeButtonClicked() {
+    @objc private func completeButtonClicked() {
         guard let text = nameSettingView.inputTextField.text else { return }
         name?(text)
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func inputTextFieldChanged() {
+    @objc private func inputTextFieldChanged() {
         if nameSettingView.inputTextField.text == userText {
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {

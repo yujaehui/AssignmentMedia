@@ -23,20 +23,10 @@ private enum Const {
     }
 }
 
-class MainTableViewCell: BaseTableViewCell {
+final class MainTableViewCell: BaseTableViewCell {
     weak var delegate: MainTableViewCellDelegate?
-    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-    
     var mainList: [Result] = []
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func configureHierarchy() {
         contentView.addSubview(collectionView)
@@ -73,7 +63,6 @@ extension MainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         let row = mainList[indexPath.row]
         let url = URL(string: TVAPIManager.shared.imageeBaseURL + row.poster_path)
         cell.posterImageView.kf.setImage(with: url)
-        cell.titleLabel.text = row.name
         return cell
     }
     
@@ -82,7 +71,7 @@ extension MainTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         delegate?.didSelectItem(withID: id)
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = Const.itemSize
         layout.minimumLineSpacing = Const.itemSpacing

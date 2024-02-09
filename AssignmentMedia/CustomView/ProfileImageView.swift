@@ -1,13 +1,13 @@
 //
-//  TitleLabel.swift
+//  ProfileImageView.swift
 //  AssignmentMedia
 //
-//  Created by Jaehui Yu on 1/31/24.
+//  Created by Jaehui Yu on 2/9/24.
 //
 
 import UIKit
 
-class TitleLabel: UILabel {
+final class ProfileImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
@@ -17,8 +17,9 @@ class TitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
-        textColor = ColorStyle.mainColor
-        font = FontStyle.title
+    private func configureView() {
+        contentMode = .scaleAspectFill
+        layer.cornerRadius = 50
+        clipsToBounds = true
     }
 }
