@@ -13,6 +13,9 @@
 		09330C762B75EF020024EF80 /* ImageSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09330C752B75EF020024EF80 /* ImageSessionManager.swift */; };
 		09330C782B75F3B40024EF80 /* BasicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09330C772B75F3B40024EF80 /* BasicLabel.swift */; };
 		09330C7D2B7601FB0024EF80 /* ImageAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09330C7C2B7601FB0024EF80 /* ImageAPIManager.swift */; };
+		095359872B7B646800CC8B3C /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095359862B7B646800CC8B3C /* VideoViewController.swift */; };
+		095359892B7B646F00CC8B3C /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095359882B7B646F00CC8B3C /* VideoView.swift */; };
+		0953598B2B7B671800CC8B3C /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0953598A2B7B671800CC8B3C /* VideoModel.swift */; };
 		096C72172B765599002CA882 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096C72162B765599002CA882 /* ProfileImageView.swift */; };
 		09DA23722B68DBB60092F537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23712B68DBB60092F537 /* AppDelegate.swift */; };
 		09DA23742B68DBB60092F537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA23732B68DBB60092F537 /* SceneDelegate.swift */; };
@@ -73,6 +76,9 @@
 		09330C752B75EF020024EF80 /* ImageSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSessionManager.swift; sourceTree = "<group>"; };
 		09330C772B75F3B40024EF80 /* BasicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLabel.swift; sourceTree = "<group>"; };
 		09330C7C2B7601FB0024EF80 /* ImageAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIManager.swift; sourceTree = "<group>"; };
+		095359862B7B646800CC8B3C /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		095359882B7B646F00CC8B3C /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		0953598A2B7B671800CC8B3C /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		096C72162B765599002CA882 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		09DA236E2B68DBB60092F537 /* AssignmentMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssignmentMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09DA23712B68DBB60092F537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 				09DA23A42B68EDDB0092F537 /* TVModel.swift */,
 				09DA23CB2B6A3C3A0092F537 /* SeriesDetailsModel.swift */,
 				09DA23CD2B6A3EE20092F537 /* AggregateCreditsModel.swift */,
+				0953598A2B7B671800CC8B3C /* VideoModel.swift */,
 			);
 			path = TMDB;
 			sourceTree = "<group>";
@@ -294,6 +301,8 @@
 			children = (
 				09DA23F22B6B57B60092F537 /* DetailView.swift */,
 				09DA23B82B6A16DC0092F537 /* DetailViewController.swift */,
+				095359882B7B646F00CC8B3C /* VideoView.swift */,
+				095359862B7B646800CC8B3C /* VideoViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 				09DA24E92B7382210092F537 /* ProfileImageTableViewCell.swift in Sources */,
 				09330C6A2B75EA550024EF80 /* ProfileImageSettingView.swift in Sources */,
 				09DA24112B71E3BE0092F537 /* TVSessionManager.swift in Sources */,
+				095359872B7B646800CC8B3C /* VideoViewController.swift in Sources */,
 				09DA23762B68DBB60092F537 /* ViewController.swift in Sources */,
 				09DA239B2B68E1AC0092F537 /* APIKey.swift in Sources */,
 				09330C742B75EEA60024EF80 /* ImageModel.swift in Sources */,
@@ -449,6 +459,7 @@
 				09DA23962B68E02C0092F537 /* BasicCollectionViewCell.swift in Sources */,
 				09DA23A52B68EDDB0092F537 /* TVModel.swift in Sources */,
 				09DA23C72B6A1D920092F537 /* UIButton.Configuration+Extension.swift in Sources */,
+				095359892B7B646F00CC8B3C /* VideoView.swift in Sources */,
 				09DA23FA2B6BC5170092F537 /* MainCollectionViewCell.swift in Sources */,
 				09DA240B2B6F9DA50092F537 /* SearchViewController.swift in Sources */,
 				09DA23B92B6A16DC0092F537 /* DetailViewController.swift in Sources */,
@@ -456,6 +467,7 @@
 				09DA23E72B6A6BEC0092F537 /* UIView+Extension.swift in Sources */,
 				09DA23F12B6B57A10092F537 /* HomeView.swift in Sources */,
 				09DA23AB2B69557B0092F537 /* MainTableViewCell.swift in Sources */,
+				0953598B2B7B671800CC8B3C /* VideoModel.swift in Sources */,
 				09DA23742B68DBB60092F537 /* SceneDelegate.swift in Sources */,
 				09DA23BE2B6A19A90092F537 /* MainInfoTableViewCell.swift in Sources */,
 				09DA23D22B6A61510092F537 /* PosterImageView.swift in Sources */,

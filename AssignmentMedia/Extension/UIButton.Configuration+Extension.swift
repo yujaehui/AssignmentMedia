@@ -27,6 +27,18 @@ extension UIButton.Configuration {
         return config
     }
     
+    static func playStyle() -> UIButton.Configuration {
+        var config = UIButton.Configuration.filled()
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold)
+        config.image = UIImage(systemName: "play.circle", withConfiguration: imageConfig)
+        
+        config.baseForegroundColor = ColorStyle.mainColor
+        config.baseBackgroundColor = .clear
+        
+        return config
+    }
+    
     static func dismissStyle() -> UIButton.Configuration {
         var config = UIButton.Configuration.filled()
         

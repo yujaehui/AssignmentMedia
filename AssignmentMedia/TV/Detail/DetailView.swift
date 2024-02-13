@@ -9,6 +9,11 @@ import UIKit
 
 final class DetailView: BaseView {
     let backdropImageView = UIImageView()
+    let playButton: UIButton = {
+        let view = UIButton()
+        view.configuration = .playStyle()
+        return view
+    }()
     let dismissButton: UIButton = {
         let view = UIButton()
         view.configuration = .dismissStyle()
@@ -30,6 +35,7 @@ final class DetailView: BaseView {
     
     override func configureHierarchy() {
         addSubview(backdropImageView)
+        addSubview(playButton)
         addSubview(dismissButton)
         addSubview(xButton)
         addSubview(tableView)
@@ -39,6 +45,10 @@ final class DetailView: BaseView {
         backdropImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(200)
+        }
+        
+        playButton.snp.makeConstraints { make in
+            make.center.equalTo(backdropImageView)
         }
         
         dismissButton.snp.makeConstraints { make in

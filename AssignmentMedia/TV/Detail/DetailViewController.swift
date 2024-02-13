@@ -64,8 +64,16 @@ final class DetailViewController: BaseViewController {
             self.detailView.backdropImageView.kf.setImage(with: url)
         }
         
+        detailView.playButton.addTarget(self, action: #selector(playButtonClicked), for: .touchUpInside)
         detailView.dismissButton.addTarget(self, action: #selector(dismissButtonClicked), for: .touchUpInside)
         detailView.xButton.addTarget(self, action: #selector(xButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func playButtonClicked() {
+        print(id)
+        let vc = VideoViewController()
+        vc.id = id
+        present(vc, animated: true)
     }
     
     @objc private func dismissButtonClicked() {
